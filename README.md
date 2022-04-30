@@ -12,8 +12,9 @@
 
 
 ## Requirements
--PHP 7.4.22
--MySQL DB
+-PHP 7.4.22.
+-MySQL DB.
+-StopLight API design.
 
 ## gitHub repo
 
@@ -21,4 +22,5 @@ for downlowd project copy this line:
 git clone https://github.com/jihadtareq/InvoiceTask.git.
 
 ## NT
-Copy env.example in your env file 
+-Copy env.example in your env file.
+-open " invoice.json " in root  to get api design.
