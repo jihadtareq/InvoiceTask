@@ -8,13 +8,13 @@
 
 ## about project
 
--Admin can generates invoices for clients and create clients(done with unitTest).
+- Admin can generates invoices for clients and create clients(done with unitTest).
 
 
 ## Requirements
--PHP 7.4.22.
--MySQL DB.
--StopLight API design.
+- PHP 7.4.22.
+- MySQL DB.
+- StopLight API design.
 
 ## gitHub repo
 
@@ -22,5 +22,5 @@ for downlowd project copy this line:
 git clone https://github.com/jihadtareq/InvoiceTask.git.
 
 ## NT
--Copy env.example in your env file.
--open " invoice.json " in root  to get api design.
+- Copy env.example in your env file.
+- open " invoice.json " in root  to get api design.
