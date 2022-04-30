@@ -1,0 +1,703 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Invoice",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/api/login": {
+      "post": {
+        "summary": "Login",
+        "operationId": "post-api-login",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "token": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "token",
+                    "name"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "message": "User login successfully.",
+                      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiYzBkYTFhY2M3ZmNkNjAyNjRlZDczMWFjYzRjMzVkMWNlYjY4MDI5ODQ2ZjYyYzVmNGQ1MTM5MTdhNmZjMGIxOTA4Y2NhM2UwMWVhOTE2ZjgiLCJpYXQiOjE2NTEyNTgwNjkuNjIzMDM2LCJuYmYiOjE2NTEyNTgwNjkuNjIzMDQzLCJleHAiOjE2ODI3OTQwNjkuNjEyNTczLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.ofqftc3Sze0YnTCGO2wuOGdRGrNZAtBETNKT94EBsCFG6TZjGrD-L54YaBMImtFOOl7KouymsaP5_bjdyDgaHLPXY60qQpck_6AGnEvrhQnvtei9RSOiOKv0AHu7xNMnwFmcbg9V8X2andExXtwhJ-F7j8KAreoBPcabY4enttFcWiHgKwwjhhyqIiOyEygAY9fYUzSMxOEHwpeFG_0baSwDIeDFpKTz_rlA_ngaVFN8VMd8i0UAS4hYvgIMu91hBzuUVhGXhw_tWp4H62aCuZbAHAMgqRvrMnAcxdLbedhQ8qnEN0QzZXHtDTqRnE8rPiPdaQcdILspn8IEeJIAm3w_GnT3mDsrWbo7_2AYI3IR8rxGIk-x0RvmifvGwIKfXEiITl45F_h-vp-fkHVpeoDAuFHYgWTqT8eBb1hYE-DA6rtdEPXjCC9_2sv-J3UQ_ET8vGX3rEsj3VHOXsEIYf1UQ9mvFvvqHen7YL5oslllxNNkbo0ZitkWkYoxJQvUUhNUtvG4XyB92n3lrQvhes0FqTh3RPv9pg6q-2m_7zAQM8d9kDL26Xn7IDaLWvUA_TmmueRUUzdSIPttaxD1gODhv18AfximxP1mAe15bmChq3-QkFmh1yl9GA03fmIoJ87Mz9VmyolAgRHnDPCxd7CdibJWbEVbA34k-E75SzY",
+                      "name": "admin"
+                    }
+                  }
+                },
+                "examples": {
+                  "login response": {
+                    "value": {
+                      "message": "User login successfully.",
+                      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiYzBkYTFhY2M3ZmNkNjAyNjRlZDczMWFjYzRjMzVkMWNlYjY4MDI5ODQ2ZjYy ...",
+                      "name": "admin"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "login ",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "password": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "email": "admin@admin.com",
+                    "password": 123456
+                  }
+                }
+              },
+              "examples": {
+                "login by admin": {
+                  "value": {
+                    "email": "admin@admin.com",
+                    "password": 123456
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        }
+      }
+    },
+    "/api/client": {
+      "post": {
+        "summary": "Create New User",
+        "operationId": "post-client",
+        "responses": {
+          "200": {
+            "description": "Client Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "message"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Client is updated successfully"
+                    }
+                  }
+                },
+                "examples": {
+                  "New Client": {
+                    "value": {
+                      "message": "Client is created successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Email Already Taken"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "full_name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "email": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "full_name",
+                  "mobile",
+                  "email"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "full_name": "nourhan tareq Mahmoud",
+                    "mobile": "0120526548",
+                    "email": "Jihadtarek60@gmail.com"
+                  }
+                }
+              },
+              "examples": {
+                "Create Client ": {
+                  "value": {
+                    "full_name": "Jihad tareq Mahmoud",
+                    "mobile": "0120526548",
+                    "email": "Jihadtarek60@gmail.com"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Post the necessary fields for the API to create a new client."
+        },
+        "description": "Create a new Client."
+      },
+      "parameters": []
+    },
+    "/api/client/{client}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "client",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get User Info by User ID",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "Client Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "description": "",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "x-examples": {
+                    "example-1": [
+                      {
+                        "id": 1,
+                        "full_name": "nourhan tareq Mahmoud",
+                        "mobile": "0120526548",
+                        "email": "Jihadtarek60@gmail.com"
+                      }
+                    ]
+                  },
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "full_name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "mobile": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "email": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "full_name",
+                      "mobile",
+                      "email"
+                    ]
+                  }
+                },
+                "examples": {
+                  "get client by id=1": {
+                    "value": [
+                      {
+                        "id": 1,
+                        "full_name": "nourhan tareq Mahmoud",
+                        "mobile": "0120526548",
+                        "email": "Jihadtarek60@gmail.com"
+                      }
+                    ]
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "description": "",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "full_name",
+                      "mobile",
+                      "email"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "full_name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "mobile": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "email": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": [
+                      {
+                        "id": 1,
+                        "full_name": "nourhan tareq Mahmoud",
+                        "mobile": "0120526548",
+                        "email": "Jihadtarek60@gmail.com"
+                      }
+                    ]
+                  }
+                },
+                "examples": {
+                  "get client with ID=1": {
+                    "value": [
+                      {
+                        "id": 1,
+                        "full_name": "nourhan tareq Mahmoud",
+                        "mobile": "0120526548",
+                        "email": "Jihadtarek60@gmail.com"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-client-clientId",
+        "description": "Retrieve the information of the client with the matching client ID."
+      },
+      "put": {
+        "summary": "CLient By ID",
+        "operationId": "put-api-client-client",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "message"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Client is updated successfully"
+                    }
+                  }
+                },
+                "examples": {
+                  "updated message": {
+                    "value": {
+                      "message": "Client is updated successfully"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Update on Client",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "full_name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "email": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "full_name",
+                  "mobile",
+                  "email"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "full_name": "Jihad tareq Mahmoud",
+                    "mobile": "0120526548",
+                    "email": "Jihadtarek60@gmail.com"
+                  }
+                }
+              },
+              "examples": {
+                "update client": {
+                  "value": {
+                    "full_name": "Nourhan tareq",
+                    "mobile": "0120526548",
+                    "email": "Nour@gmail.com"
+                  }
+                }
+              }
+            }
+          },
+          "description": "update on client with id = 1"
+        }
+      }
+    },
+    "/api/invoice": {
+      "post": {
+        "summary": "",
+        "operationId": "post-api-invoice",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "message"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Client is updated successfully"
+                    }
+                  }
+                },
+                "examples": {
+                  "create invoice": {
+                    "value": {
+                      "message": "Invoice is created successfully"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "create new invoice for client.\nNT:Client will be created in case doesn't exist.\nEmail will send to client.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "full_name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "mobile": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "email": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "amount": {
+                    "type": "number"
+                  },
+                  "due_date": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "full_name",
+                  "mobile",
+                  "email",
+                  "amount",
+                  "due_date"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "full_name": "NOUR tareq Mahmoud",
+                    "mobile": "0120526548",
+                    "email": "jihadtarek60@gmail.com",
+                    "amount": 8.25,
+                    "due_date": "2022/5/2"
+                  }
+                }
+              },
+              "examples": {
+                "create new invoice": {
+                  "value": {
+                    "full_name": "NOUR tareq Mahmoud",
+                    "mobile": "0120526548",
+                    "email": "jihadtarek60@gmail.com",
+                    "amount": 8.25,
+                    "due_date": "2022/5/2"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Information required to create invoice"
+        }
+      }
+    },
+    "/api/invoice/{invoice}": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "description": "",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "client_name",
+                      "client_mobile",
+                      "client_email",
+                      "amount",
+                      "due_date"
+                    ],
+                    "properties": {
+                      "client_name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "client_mobile": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "client_email": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "amount": {
+                        "type": "number"
+                      },
+                      "due_date": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": [
+                      {
+                        "client_name": "nourhan tareq Mahmoud",
+                        "client_mobile": "0120526548",
+                        "client_email": "Jihadtarek60@gmail.com",
+                        "amount": 8.25,
+                        "due_date": "2022-05-02"
+                      }
+                    ]
+                  }
+                },
+                "examples": {
+                  "get invoice id=1": {
+                    "value": [
+                      {
+                        "id": 1,
+                        "client_name": "nourhan tareq Mahmoud",
+                        "client_mobile": "0120526548",
+                        "client_email": "Jihadtarek60@gmail.com",
+                        "amount": 8.25,
+                        "due_date": "2022-05-02"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-api-invoice-invoiceId",
+        "description": "Retrieve invoice information by ID"
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "invoice",
+          "in": "path",
+          "required": true
+        }
+      ]
+    }
+  },
+  "components": {
+    "schemas": {
+      "Client": {
+        "description": "\n",
+        "type": "object",
+        "properties": {
+          "full_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mobile": {
+            "type": "string",
+            "minLength": 1
+          },
+          "email": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "full_name",
+          "mobile",
+          "email"
+        ],
+        "x-examples": {
+          "example-1": {
+            "full_name": "nourhan tareq Mahmoud",
+            "mobile": "0120526548",
+            "email": "Jihadtarek60@gmail.com"
+          }
+        },
+        "examples": [
+          {
+            "full_name": "string",
+            "mobile": "string",
+            "email": "string"
+          }
+        ],
+        "title": "Client"
+      },
+      "Invoice": {
+        "description": "",
+        "type": "object",
+        "properties": {
+          "full_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mobile": {
+            "type": "string",
+            "minLength": 1
+          },
+          "email": {
+            "type": "string",
+            "minLength": 1
+          },
+          "amount": {
+            "type": "number"
+          },
+          "due_date": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "full_name",
+          "mobile",
+          "email",
+          "amount",
+          "due_date"
+        ],
+        "x-examples": {
+          "example-1": {
+            "full_name": "NOUR tareq Mahmoud",
+            "mobile": "0120526548",
+            "email": "jihadtarek60@gmail.com",
+            "amount": 8.25,
+            "due_date": "2022/5/2"
+          }
+        },
+        "title": "Invoice"
+      }
+    }
+  }
+}
