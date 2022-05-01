@@ -14,7 +14,6 @@
 ## Requirements
 - PHP 7.4.22.
 - MySQL DB.
-- StopLight API design.
 
 ## GitHub repo
 
@@ -31,4 +30,5 @@ git clone https://github.com/jihadtareq/InvoiceTask.git.
     - php artisan queue:work 
 - to run unitTest command:
     - php artisan test
-- open " invoice.json " in root  to get api design.
+- Download StopLight API Design Desktop :
+    - import " invoice.json " file in root.
