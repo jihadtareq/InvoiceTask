@@ -7,20 +7,20 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class LoginController extends BaseController
 {
      public function login(Request $request)
     {
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){ 
             $user = Auth::user(); 
-            $success['message'] ='User login successfully.';
+
             $success['token'] =  $user->createToken('user-token')->accessToken; 
             $success['name'] =  $user->name;
 
-            return response($success,200);
+            return $this->sendResponse($success,"User login successfully.",200);
         } 
         else{ 
-            return response(["message"=>'Unauthorized.'],401);
+            return $this->sendError('Unauthorized.',['error'=>'Unauthorized']);
         } 
     }
 }

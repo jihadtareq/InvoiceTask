@@ -10,7 +10,7 @@ use App\Http\Requests\ClientUpdateRequest;
 use App\Http\Resources\ClientResource;
 use Illuminate\Support\Facades\Auth;
 
-class ClientController extends Controller
+class ClientController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +21,7 @@ class ClientController extends Controller
     {
         $clients = Client::with('invoices')->paginate(30);
 
-        return response(ClientResource::collection($clients));
+        return $this->sendResponse(ClientResource::collection($clients),'Retrieve all clients successfully',200);
     }
 
     /**
@@ -37,9 +37,9 @@ class ClientController extends Controller
         $data['email']= $request->email;
         $data['created_by']= Auth::user()->id;
 
-        Client::create($data);
+        $client = Client::create($data);
 
-        return response(["message"=>"Client is created successfully"],201);
+        return $this->sendResponse(new ClientResource($client),"Client is created successfully",201);
     }
 
     /**
@@ -52,7 +52,7 @@ class ClientController extends Controller
     {
         $client = Client::find($id);
 
-        return response(new ClientResource($client));
+        return $this->sendResponse(new ClientResource($client),' ',200);
     }
 
     /**
@@ -70,7 +70,7 @@ class ClientController extends Controller
         $data['email']= $request->email;
 
         $client->update($data);
-        return response(["message"=>"Client is updated successfully"],201);
+        return $this->sendResponse(new ClientResource($client) ,"Client is updated successfully",201);
     }
 
     /**

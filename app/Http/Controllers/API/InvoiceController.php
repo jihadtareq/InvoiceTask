@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Jobs\SendEmailJob;
 
-class InvoiceController extends Controller
+class InvoiceController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +23,7 @@ class InvoiceController extends Controller
     {
         $invoices = Invoice::paginate(30);
 
-        return response(InvoiceResource::collection($invoices));
+        return $this->sendResponse(InvoiceResource::collection($invoices),'Retrieve all invoices successfully',200);
     }
 
 
@@ -35,6 +35,7 @@ class InvoiceController extends Controller
      */
     public function store(InvoiceRequest $request)
     {
+        $invoice = ' ';
         $clientArr['full_name']=$request->full_name;
         $clientArr['email']=$request->email;
         $clientArr['mobile']=$request->mobile;
@@ -44,7 +45,7 @@ class InvoiceController extends Controller
         $invoiceArr['due_date'] = $request->due_date;
         $invoiceArr['created_by']= Auth::user()->id;
 
-        DB::transaction(function() use ($invoiceArr, $clientArr)
+        DB::transaction(function() use ($invoiceArr, $clientArr ,&$invoice)
         {
             $client = Client::where('email',$clientArr['email'])->first();
 
@@ -54,7 +55,7 @@ class InvoiceController extends Controller
 
             $invoiceArr['client_id']=$client->id;
 
-            Invoice::create($invoiceArr);
+            $invoice = Invoice::create($invoiceArr);
 
             $details = array_merge($clientArr,$invoiceArr);
 
@@ -62,7 +63,7 @@ class InvoiceController extends Controller
 
         });
 
-        return response(["message"=>"Invoice is created successfully"],201);
+        return $this->sendResponse(new InvoiceResource($invoice),"Invoice is created successfully",201);
 
     }
 
@@ -74,7 +75,7 @@ class InvoiceController extends Controller
      */
     public function show(Invoice $invoice)
     {
-        return response(InvoiceResource::collection($invoice));
+        return $this->sendResponse(new InvoiceResource($invoice)," ",200);
     }
 
 
