@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
+use App\Models\Client;
 
 class ClientTest extends TestCase
 {
@@ -69,6 +70,22 @@ class ClientTest extends TestCase
 
                
         $response->assertStatus(302);
+    }
+
+    public function test_updates_client()
+    {
+        $admin = User::factory()->create();
+
+        $client = Client::factory()->create(['full_name' => 'Peter Mask']);
+
+        $response = $this->actingAs($admin,'api')->put("/api/client/{$client->id}",[
+            'full_name'=>"Poala Andrew",
+            'mobile'=>"0120526548",
+            'email'=>$client->email
+        ]);
+
+               
+        $response->assertStatus(201);
     }
 
     public function test_if_seeder_works()
