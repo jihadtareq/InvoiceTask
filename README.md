@@ -16,11 +16,19 @@
 - MySQL DB.
 - StopLight API design.
 
-## gitHub repo
+## GitHub repo
 
 for downlowd project copy this line:
 git clone https://github.com/jihadtareq/InvoiceTask.git.
 
-## NT
+## Instructions
 - Copy env.example in your env file.
+- the following lines are commands you should run:
+    - composer install.
+    - php artisan migrate.
+    - php artisan serve.
+- to run queue jobs:
+    - php artisan queue:work 
+- to run unitTest command:
+    - php artisan test
 - open " invoice.json " in root  to get api design.
